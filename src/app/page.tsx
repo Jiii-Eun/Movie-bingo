@@ -1,0 +1,20 @@
+import Banner from "@/components/Home/Benner";
+
+// 레이아웃 - 검색
+// 메인 페이지 - 추천, 종료일, 공개일 / 각각 filter nav - 넷플릭스, 프라임 비디오, 디즈니, 애플 티비 등
+// 상세 페이지
+// 유저 페이지
+// 검색 페이지
+// 넷플릭스 전체 페이지
+// 프라임 비디오 전체 페이지
+// 디즈니 전체 페이지
+// 애플 티비 전체 페이지
+
+export default function Home() {
+  return (
+    <>
+      <h2>main</h2>
+      <Banner />
+    </>
+  );
+}

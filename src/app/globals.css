@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-geist-mono: "Geist Mono", monospace;
+  --color-brand-black: #0a0a0c;
+  --color-brand-red: #e43946;
+  --color-brand-red-hover: #f04a56;
+  --color-brand-blue: #1976d2;
+  --color-brand-gray: #808080;
+
+  --radius-sm: 0.2rem;
+  --radius-md: 0.4rem;
+  --radius-lg: 0.6rem;
+  --radius-xl: 0.8rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.2rem;
+  --radius-4xl: 1.4rem;
+  --radius-5xl: 1.6rem;
+}
+
+@media (prefers-color-scheme: dark) {
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-brand-black);
+  color: #fff;
+}
+
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-max-w-full {
+  max-width: 1280px;
+  min-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.btn-red {
+  background-color: var(--color-brand-red);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-red:hover {
+  background-color: var(--color-brand-red-hover);
+}
+
+.icon-container {
+  width: 2rem;
+  height: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-netflix {
+  background-image: url("/icons/netflix.png");
+}
+
+.icon-prime-video {
+  background-image: url("/icons/prime-video.png");
+}
+
+.icon-disney-plus {
+  background-image: url("/icons/disney-plus.png");
+}
+
+.icon-apple-tv {
+  background-image: url("/icons/apple-tv.png");
+}
