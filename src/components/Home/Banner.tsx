@@ -8,11 +8,11 @@ import Image from "next/image";
 import { Show } from "streaming-availability";
 
 export default function Banner() {
-  const { data: topShows, isLoading } = useApi<Show[]>(["topShows"], () =>
+  const { data: topShows, isLoading } = useApi<Show[]>(["banner"], () =>
     getTopShows("movie", "netflix"),
   );
 
-  const featured = topShows?.[3];
+  const featured = topShows?.[0];
 
   return (
     <>
