@@ -1,8 +1,8 @@
-import { getGenres } from "../api/streamingApi";
+import { getGenres } from "../api/actions";
 
 export type StreamingAvailabilityCatalog =
   | "netflix"
-  | "amazon_prime"
+  | "prime"
   | "disney"
   | "apple";
 

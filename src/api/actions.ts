@@ -6,7 +6,11 @@ import {
   StreamingAvailabilityGenre,
 } from "../type/apiType";
 
-const API_KEY = process.env.STREAMING_AVAILABILITY_API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_STREAMING_AVAILABILITY_API_KEY;
+
+if (!API_KEY) {
+  throw new Error("NEXT_PUBLIC_STREAMING_AVAILABILITY_API_KEY is not set");
+}
 
 export const streamingClient = new streamingAvailability.Client(
   new streamingAvailability.Configuration({
@@ -35,7 +39,7 @@ export const getSearchFilter = async (
   yearMax?: number,
 ) => {
   return await streamingClient.showsApi.searchShowsByFilters({
-    country: "en",
+    country: "kr",
     showType: showType,
     keyword: keyword,
     catalogs: catalogs,
@@ -47,24 +51,22 @@ export const getSearchFilter = async (
 };
 
 export const getTopShows = async (
-  country: string,
   showType: StreamingAvailabilityShowType,
   service: StreamingAvailabilityCatalog,
 ) => {
   return await streamingClient.showsApi.getTopShows({
-    country: "en",
+    country: "kr",
     showType: showType,
     service: service,
   });
 };
 
 export const getChanges = async (
-  country: string,
   changeType: "new" | "expiring" | "upcoming",
   catalogs: StreamingAvailabilityCatalog[],
 ) => {
   return await streamingClient.changesApi.getChanges({
-    country: "en",
+    country: "kr",
     changeType: changeType,
     itemType: "show",
     catalogs: catalogs,

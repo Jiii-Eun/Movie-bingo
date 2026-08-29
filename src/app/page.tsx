@@ -1,4 +1,5 @@
-import Banner from "@/components/Home/Benner";
+import Banner from "@/components/Home/Banner";
+import TopMovies from "@/components/Home/TopMovies";
 
 // 레이아웃 - 검색
 // 메인 페이지 - 추천, 종료일, 공개일 / 각각 filter nav - 넷플릭스, 프라임 비디오, 디즈니, 애플 티비 등
@@ -13,8 +14,13 @@ import Banner from "@/components/Home/Benner";
 export default function Home() {
   return (
     <>
-      <h2>main</h2>
-      <Banner />
+      <div>
+        <Banner />
+        <TopMovies
+          title="Top Movies"
+          badges={["netflix", "prime", "disney", "apple"]}
+        />
+      </div>
     </>
   );
 }
