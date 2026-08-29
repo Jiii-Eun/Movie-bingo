@@ -20,7 +20,7 @@ export default function Banner() {
         {isLoading || !featured ? (
           <Skeleton className="w-full aspect-video rounded-2xl" />
         ) : (
-          <div className="rounded-2xl shadow-banner">
+          <div className="rounded-2xl shadow-banner border-1 border-white/10">
             <Image
               src={featured.imageSet.horizontalPoster.w1440}
               alt={featured.title}
