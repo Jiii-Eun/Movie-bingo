@@ -1,5 +1,3 @@
-"use server";
-
 import * as streamingAvailability from "streaming-availability";
 
 import {
