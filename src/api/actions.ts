@@ -8,10 +8,10 @@ import {
   StreamingAvailabilityGenre,
 } from "../type/apiType";
 
-const API_KEY = process.env.NEXT_PUBLIC_STREAMING_AVAILABILITY_API_KEY;
+const API_KEY = process.env.STREAMING_AVAILABILITY_API_KEY;
 
 if (!API_KEY) {
-  throw new Error("NEXT_PUBLIC_STREAMING_AVAILABILITY_API_KEY is not set");
+  throw new Error("STREAMING_AVAILABILITY_API_KEY is not set");
 }
 
 export const streamingClient = new streamingAvailability.Client(
