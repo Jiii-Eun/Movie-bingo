@@ -1,4 +1,4 @@
-import * as streamingAvailability from "streaming-availability";
+"use server";
 
 import {
   StreamingAvailabilityShowType,
@@ -6,17 +6,7 @@ import {
   StreamingAvailabilityGenre,
 } from "../type/apiType";
 
-const API_KEY = process.env.STREAMING_AVAILABILITY_API_KEY;
-
-if (!API_KEY) {
-  throw new Error("STREAMING_AVAILABILITY_API_KEY is not set");
-}
-
-export const streamingClient = new streamingAvailability.Client(
-  new streamingAvailability.Configuration({
-    apiKey: API_KEY,
-  }),
-);
+import { streamingClient } from "./client";
 
 export const getGenres = async () => {
   return await streamingClient.genresApi.getGenres({
