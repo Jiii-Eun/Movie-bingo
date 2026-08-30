@@ -1,31 +1,33 @@
+import IconBadge from "@/components/Home/IconBadge";
+import { StreamingAvailabilityCatalog } from "@/type/apiType";
 import Image from "next/image";
 import { Show } from "streaming-availability";
 
-export default function MovieCardPost({ show }: { show: Show }) {
+export default function MovieCardPost({
+  show,
+  activeBadge,
+}: {
+  show: Show;
+  activeBadge: StreamingAvailabilityCatalog;
+}) {
   return (
-    <>
-      <div className="flex-col gap-2" key={show.id}>
-        <div>{show.title}</div>
-        <div className="flex-center gap-2">
-          <Image
-            src={show.imageSet.verticalPoster.w360}
-            alt={show.title}
-            width={360}
-            height={360}
-            className="object-cover"
-            priority
-          />
-          <div className="flex-center gap-2">
-            {show.genres.map((genre) => (
-              <div key={genre.id}>{genre.name}</div>
-            ))}
-          </div>
-          <div className="flex-col">
-            <h4>{show.title}</h4>
-            <p>{show.releaseYear}</p>
-          </div>
+    <div className="px-2">
+      <div className="relative overflow-hidden rounded-xl">
+        {activeBadge && <IconBadge type={activeBadge} />}
+        <Image
+          src={show.imageSet.verticalPoster.w360}
+          alt={show.title}
+          width={240}
+          height={360}
+          className="h-auto w-full object-cover"
+        />
+        <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/85 to-transparent px-3 pt-8 pb-2">
+          <p className="line-clamp-2 text-center text-xs text-white">
+            {show.releaseYear}・
+            {show.genres.map((genre) => genre.name).join(" / ")}
+          </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }

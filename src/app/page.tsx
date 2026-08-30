@@ -1,5 +1,6 @@
 import Banner from "@/components/Home/Banner";
 import TopMovies from "@/components/Home/TopMovies";
+import UpdateMovies from "@/components/Home/UpdateMovies";
 
 // 레이아웃 - 검색
 // 메인 페이지 - 추천, 종료일, 공개일 / 각각 filter nav - 넷플릭스, 프라임 비디오, 디즈니, 애플 티비 등
@@ -17,9 +18,10 @@ export default function Home() {
       <div>
         <Banner />
         <TopMovies
-          title="Top Movies"
+          title="Top 10 영화"
           badges={["netflix", "prime", "disney", "apple"]}
         />
+        <UpdateMovies />
       </div>
     </>
   );

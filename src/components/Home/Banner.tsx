@@ -12,7 +12,7 @@ export default function Banner() {
     getTopShows("movie", "netflix"),
   );
 
-  const featured = topShows?.[0];
+  const featured = topShows?.[6];
 
   return (
     <>
