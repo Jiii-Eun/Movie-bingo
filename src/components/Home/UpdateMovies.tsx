@@ -12,6 +12,7 @@ import NoList from "@/components/Home/NoList";
 import Carousel from "react-multi-carousel";
 import { responsive } from "./TopMovies";
 import { StreamingAvailabilityCatalog } from "@/type/apiType";
+import "react-multi-carousel/lib/styles.css";
 
 export default function UpdateMovies() {
   const [changeType, setChangeType] = useState<"new" | "expiring" | "upcoming">(
@@ -34,7 +35,7 @@ export default function UpdateMovies() {
   ];
 
   return (
-    <section className="container-max-w-full px-2 py-6">
+    <section className="px-2 py-6">
       <h2 className="text-2xl font-bold">
         {changeType === "new"
           ? "신작 영화"

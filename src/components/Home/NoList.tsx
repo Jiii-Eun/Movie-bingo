@@ -15,10 +15,10 @@ export default function NoList() {
         ))}
       </div>
       <FeedbackIcon
-        className="animate-float absolute top-40 left-1/2 -translate-x-1/2 text-white"
+        className="animate-float absolute top-[34%] left-1/2 -translate-x-1/2 text-white"
         sx={{ fontSize: { xs: "2rem", md: "4rem" } }}
       />
-      <p className="absolute top-60 left-1/2 -translate-x-1/2 flex items-center justify-center px-4 text-center text-sm text-white/70 md:text-base">
+      <p className="absolute top-[55%] left-1/2 -translate-x-1/2 flex items-center justify-center px-4 text-center text-sm text-white/70 md:text-xl font-bold">
         이 서비스의 콘텐츠 목록이 없습니다.
       </p>
     </div>
