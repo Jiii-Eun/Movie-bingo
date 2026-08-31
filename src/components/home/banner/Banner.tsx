@@ -6,13 +6,20 @@ import Skeleton from "@/components/common/Skeleton";
 import { useApi } from "@/hooks/apiHook";
 import Image from "next/image";
 import { Show } from "streaming-availability";
+import Error from "@/components/common/Error";
 
 export default function Banner() {
-  const { data: topShows, isLoading } = useApi<Show[]>(["banner"], () =>
-    getTopShows("movie", "netflix"),
-  );
+  const {
+    data: topShows,
+    isLoading,
+    error,
+  } = useApi<Show[]>(["banner"], () => getTopShows("movie", "netflix"));
 
   const featured = topShows?.[6];
+
+  if (error) {
+    return <Error error={error} />;
+  }
 
   return (
     <>

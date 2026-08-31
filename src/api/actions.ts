@@ -8,18 +8,21 @@ import {
 
 import { streamingClient } from "./client";
 
+// 장르 목록
 export const getGenres = async () => {
   return await streamingClient.genresApi.getGenres({
     outputLanguage: "en",
   });
 };
 
+// 상세 페이지
 export const getShow = async (id: string) => {
   return await streamingClient.showsApi.getShow({
     id: id,
   });
 };
 
+// 검색 필터 및 목록
 export const getSearchFilter = async (
   showType: StreamingAvailabilityShowType,
   catalogs: StreamingAvailabilityCatalog[],
@@ -40,6 +43,7 @@ export const getSearchFilter = async (
   });
 };
 
+// 인기 영화 목록
 export const getTopShows = async (
   showType: StreamingAvailabilityShowType,
   service: StreamingAvailabilityCatalog,
@@ -51,6 +55,7 @@ export const getTopShows = async (
   });
 };
 
+// 변경될 영화 목록
 export const getChanges = async (
   changeType: "new" | "expiring" | "upcoming",
   catalogs: StreamingAvailabilityCatalog[],

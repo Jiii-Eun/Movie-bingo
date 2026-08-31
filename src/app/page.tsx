@@ -1,6 +1,6 @@
-import Banner from "@/components/Home/Banner";
-import TopMovies from "@/components/Home/TopMovies";
-import UpdateMovies from "@/components/Home/UpdateMovies";
+import Banner from "@/components/home/banner/Banner";
+import TopMovies from "@/components/home/slide-movie/TopMovies";
+import UpdateMovies from "@/components/home/slide-movie/UpdateMovies";
 
 // 레이아웃 - 검색
 // 메인 페이지 - 추천, 종료일, 공개일 / 각각 filter nav - 넷플릭스, 프라임 비디오, 디즈니, 애플 티비 등

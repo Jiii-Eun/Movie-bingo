@@ -2,8 +2,8 @@
 
 import { useRef, useEffect, useState } from "react";
 
-import Header from "@/components/layouts/Header";
-import Navbar from "@/components/layouts/Navbar";
+import Header from "@/components/layouts/header/Header";
+import Navbar from "@/components/layouts/header/Navbar";
 
 export default function NavLayout() {
   const [showHeader, setShowHeader] = useState(true);

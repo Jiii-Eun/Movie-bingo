@@ -14,13 +14,15 @@ export default function NoList() {
           </div>
         ))}
       </div>
-      <FeedbackIcon
-        className="animate-float absolute top-[34%] left-1/2 -translate-x-1/2 text-white"
-        sx={{ fontSize: { xs: "2rem", md: "4rem" } }}
-      />
-      <p className="absolute top-[55%] left-1/2 -translate-x-1/2 flex items-center justify-center px-4 text-center text-sm text-white/70 md:text-xl font-bold">
-        이 서비스의 콘텐츠 목록이 없습니다.
-      </p>
+      <div className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 px-4 sm:gap-4 md:gap-5">
+        <FeedbackIcon
+          className="animate-float text-white"
+          sx={{ fontSize: { xs: "2rem", sm: "3rem", md: "4rem" } }}
+        />
+        <p className="max-w-[16rem] text-center text-sm font-bold text-white/70 sm:max-w-none sm:text-base md:text-xl">
+          이 서비스의 콘텐츠 목록이 없습니다.
+        </p>
+      </div>
     </div>
   );
 }

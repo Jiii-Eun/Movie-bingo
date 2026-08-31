@@ -135,3 +135,15 @@ body {
 .animate-float {
   animation: float 2s ease-in-out infinite;
 }
+
+@layer base {
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.25rem;
+    }
+  }
+}

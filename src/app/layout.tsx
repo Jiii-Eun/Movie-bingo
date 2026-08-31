@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import NavLayout from "@/components/layouts/NavLayout";
+import NavLayout from "@/components/layouts/header/NavLayout";
 import QueryProvider from "@/components/providers/QueryProvider";
 
 const geistSans = Geist({

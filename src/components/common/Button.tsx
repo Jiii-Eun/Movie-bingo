@@ -9,7 +9,12 @@ export default function Button({
   return (
     <MuiButton
       sx={[
-        { minWidth: 0 },
+        {
+          minWidth: 0,
+          minHeight: 0,
+          display: "inline-flex",
+          alignItems: "center",
+        },
         ...(isIcon
           ? [
               {

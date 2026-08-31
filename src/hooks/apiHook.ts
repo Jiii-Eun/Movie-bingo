@@ -8,6 +8,8 @@ export const useApi = <T>(
   return useQuery({
     queryKey: queryKey,
     queryFn: queryFn,
+    refetchOnWindowFocus: false,
+    staleTime: 60 * 60 * 1000 * 24,
     ...options,
   });
 };

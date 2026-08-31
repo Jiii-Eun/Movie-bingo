@@ -1,0 +1,93 @@
+"use client";
+
+import { getTopShows } from "@/api/actions";
+import Button from "@/components/common/Button";
+import Error from "@/components/common/Error";
+import OttCard from "@/components/ott/OttCard";
+import OttCardSkeleton from "@/components/ott/OttCardSkeleton";
+import { useApi } from "@/hooks/apiHook";
+import {
+  StreamingAvailabilityCatalog,
+  StreamingAvailabilityShowType,
+} from "@/type/apiType";
+import { useState } from "react";
+import { Show } from "streaming-availability";
+
+export default function OttLayout({
+  ottTitle,
+  className,
+  classNameChildren,
+  serviceType,
+}: {
+  ottTitle?: React.ReactNode;
+  className?: string;
+  classNameChildren?: string;
+  serviceType: StreamingAvailabilityCatalog;
+}) {
+  const [activeTab, setActiveTab] =
+    useState<StreamingAvailabilityShowType>("movie");
+
+  const handleActiveTab = (tab: StreamingAvailabilityShowType) => {
+    setActiveTab(tab);
+  };
+
+  const {
+    data: ottData,
+    isPending,
+    error,
+  } = useApi<Show[]>(["ott", serviceType, activeTab], () =>
+    getTopShows(activeTab, serviceType),
+  );
+
+  return (
+    <div className={`flex flex-col gap-4 py-6 px-2 ${className}`}>
+      <div className="flex items-end gap-6">
+        <h3 className="m-0 text-2xl align-bottom">{ottTitle}</h3>
+        <div className="flex-center gap-2">
+          <Button
+            sx={{
+              padding: 0,
+              textAlign: "center",
+              fontSize: "1.125rem",
+              color:
+                activeTab === "movie"
+                  ? "var(--color-brand-red-muted)"
+                  : "var(--color-white)",
+            }}
+            onClick={() => handleActiveTab("movie")}
+          >
+            <div>영화</div>
+          </Button>
+          <span className="w-[1px] h-4 bg-white/30"></span>
+          <Button
+            sx={{
+              padding: 0,
+              textAlign: "center",
+              fontSize: "1.125rem",
+              color:
+                activeTab === "series"
+                  ? "var(--color-brand-red-muted)"
+                  : "var(--color-white)",
+            }}
+            onClick={() => handleActiveTab("series")}
+          >
+            시리즈
+          </Button>
+        </div>
+      </div>
+      <div
+        className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-2 ${classNameChildren}`}
+      >
+        {isPending ? (
+          <OttCardSkeleton />
+        ) : (
+          <>
+            {ottData?.map((ott) => (
+              <OttCard key={ott.id} ott={ott} />
+            ))}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}

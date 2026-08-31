@@ -2,7 +2,7 @@ export default function Skeleton({
   className,
   children,
 }: {
-  className: string;
+  className?: string;
   children?: React.ReactNode;
 }) {
   return (
