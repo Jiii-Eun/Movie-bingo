@@ -164,7 +164,13 @@ export default function SideFilter({
           </div>
         </FormGroup>
         <FormControl className="genre-select bg-brand-black">
-          <InputLabel id="genre-select-label" sx={{ color: "#fff" }}>
+          <InputLabel
+            id="genre-select-label"
+            sx={{
+              color: "var(--color-brand-red)",
+              "&.Mui-focused": { color: "var(--color-brand-red)" },
+            }}
+          >
             장르
           </InputLabel>
           <Select
@@ -173,18 +179,53 @@ export default function SideFilter({
             value={selectGenre}
             label="장르"
             onChange={handleGenreChange}
+            MenuProps={{
+              slotProps: {
+                paper: {
+                  sx: {
+                    backgroundColor: "var(--color-brand-black)",
+                    border: "1px solid var(--color-brand-red)",
+                    borderRadius: "var(--radius-md)",
+                  },
+                },
+              },
+            }}
             sx={{
               color: "#fff",
-              textColor: "#fff",
-              borderColor: "#fff",
               backgroundColor: "var(--color-brand-black)",
               "& .MuiSelect-icon": {
-                color: "#fff",
-                textColor: "#fff",
+                color: "var(--color-brand-red)",
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "var(--color-brand-red-muted)",
+              },
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "var(--color-brand-red)",
+              },
+              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "var(--color-brand-red)",
               },
             }}
           >
-            <MenuItem value="all">전체</MenuItem>
+            <MenuItem
+              value="all"
+              sx={{
+                backgroundColor: "var(--color-brand-black)",
+                color: "#fff",
+                "&:hover": {
+                  backgroundColor: "var(--color-brand-red-muted)",
+                },
+                "&.Mui-selected": {
+                  backgroundColor: "var(--color-brand-red) !important",
+                  color: "#fff",
+                },
+                "&.Mui-selected:hover": {
+                  backgroundColor: "var(--color-brand-red-hover) !important",
+                },
+              }}
+            >
+              전체
+            </MenuItem>
             {genres?.map((genre) => (
               <MenuItem
                 key={genre.id}
@@ -192,16 +233,15 @@ export default function SideFilter({
                 sx={{
                   backgroundColor: "var(--color-brand-black)",
                   color: "#fff",
-                  textColor: "#fff",
-                  "& .MuiSelect-icon": {
-                    color: "#fff",
-                    textColor: "#fff",
-                  },
                   "&:hover": {
                     backgroundColor: "var(--color-brand-red-muted)",
                   },
                   "&.Mui-selected": {
-                    backgroundColor: "var(--color-brand-red)",
+                    backgroundColor: "var(--color-brand-red) !important",
+                    color: "#fff",
+                  },
+                  "&.Mui-selected:hover": {
+                    backgroundColor: "var(--color-brand-red-hover) !important",
                   },
                 }}
               >
@@ -213,14 +253,30 @@ export default function SideFilter({
         <div className="mx-2">
           <h4>연도</h4>
           <Slider
-            getAriaLabel={() => "Minimum distance"}
+            getAriaLabel={() => "개봉 연도"}
             value={yearRange}
             onChange={handleYearChange}
-            getAriaValueText={(value: number) => `${value}`}
+            getAriaValueText={(value: number) => `${value}년`}
             step={1}
             valueLabelDisplay="auto"
             min={1990}
             max={2026}
+            sx={{
+              color: "var(--color-brand-red)",
+              "& .MuiSlider-thumb": {
+                backgroundColor: "var(--color-brand-red)",
+              },
+              "& .MuiSlider-track": {
+                backgroundColor: "var(--color-brand-red)",
+              },
+              "& .MuiSlider-rail": {
+                opacity: 0.4,
+                backgroundColor: "var(--color-brand-gray)",
+              },
+              "& .MuiSlider-valueLabel": {
+                backgroundColor: "var(--color-brand-red)",
+              },
+            }}
           />
           <div className="text-xl">
             {yearRange[0]}년 ~ {yearRange[1]}년

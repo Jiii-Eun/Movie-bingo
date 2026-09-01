@@ -26,6 +26,7 @@ export default function OttCard({ ott }: { ott: Show }) {
           width={480}
           height={720}
           className="aspect-2/3 h-auto w-full object-cover"
+          loading="eager"
         />
         {ott.rating !== 0 && (
           <span className="absolute top-2 right-2 rounded-md bg-black/70 px-1.5 py-0.5 text-xs font-semibold text-red ">
