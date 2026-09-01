@@ -13,6 +13,6 @@ export const getGenreNames = async () => {
   return genres.map((genre) => genre.name);
 };
 
-export const genreNames = await getGenreNames();
+const genreNames = await getGenreNames();
 
 export type StreamingAvailabilityGenre = typeof genreNames;
