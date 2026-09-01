@@ -27,9 +27,9 @@ export default function OttCard({ ott }: { ott: Show }) {
           height={720}
           className="aspect-2/3 h-auto w-full object-cover"
         />
-        {ott.rating != null && (
-          <span className="absolute top-2 right-2 rounded-md bg-black/70 px-1.5 py-0.5 text-xs font-semibold text-white">
-            {ott.rating}
+        {ott.rating !== 0 && (
+          <span className="absolute top-2 right-2 rounded-md bg-black/70 px-1.5 py-0.5 text-xs font-semibold text-red ">
+            ⭐ {ott.rating} 위
           </span>
         )}
         <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/85 to-transparent px-3 pt-10 pb-3">

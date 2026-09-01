@@ -76,7 +76,7 @@ export default function UpdateMovies() {
             show={show}
             activeBadge={
               show.streamingOptions.kr[0].service
-                .name as StreamingAvailabilityCatalog
+                .id as StreamingAvailabilityCatalog
             }
           />
         ))}

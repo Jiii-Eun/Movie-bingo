@@ -39,6 +39,12 @@ export default function OttLayout({
     getTopShows(activeTab, serviceType),
   );
 
+  console.log(ottData);
+
+  if (error) {
+    return <Error error={error} />;
+  }
+
   return (
     <div className={`flex flex-col gap-4 py-6 px-2 ${className}`}>
       <div className="flex items-end gap-6">

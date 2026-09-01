@@ -24,17 +24,17 @@ export const getShow = async (id: string) => {
 
 // 검색 필터 및 목록
 export const getSearchFilter = async (
-  showType: StreamingAvailabilityShowType,
-  catalogs: StreamingAvailabilityCatalog[],
-  keyword?: string,
+  keyword: string,
+  showType?: StreamingAvailabilityShowType,
+  catalogs?: StreamingAvailabilityCatalog[],
   genres?: StreamingAvailabilityGenre,
   yearMin?: number,
   yearMax?: number,
 ) => {
   return await streamingClient.showsApi.searchShowsByFilters({
     country: "kr",
-    showType: showType,
     keyword: keyword,
+    showType: showType,
     catalogs: catalogs,
     yearMin: yearMin,
     yearMax: yearMax,
