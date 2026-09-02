@@ -1,10 +1,11 @@
-import SearchInput from "@/components/common/SearchInput";
-
 import MenuIcon from "@mui/icons-material/Menu";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
+
 import Button from "@/components/common/Button";
 import Logo from "@/components/common/Logo";
+
+import SearchInputWithUrl from "@/components/common/search/SearchInputWithUrl";
 
 export default function Header() {
   const isLoggedIn = false;
@@ -16,7 +17,7 @@ export default function Header() {
           <Logo />
         </h1>
         <div className="flex-center gap-4">
-          <SearchInput />
+          <SearchInputWithUrl />
           <div>
             <Button
               isIcon

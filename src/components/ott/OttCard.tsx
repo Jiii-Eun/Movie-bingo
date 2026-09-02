@@ -1,3 +1,11 @@
+import {
+  NetflixBadgeRound,
+  PrimeVideoBadgeRound,
+  DisneyPlusBadgeRound,
+  AppleTVBadgeRound,
+} from "@/components/common/OttBadge";
+import { DisneyPlus, Netflix, PrimeVideo } from "@/constans/ott";
+import { StreamingAvailabilityCatalog } from "@/type/apiType";
 import Image from "next/image";
 import Link from "next/link";
 import { Show } from "streaming-availability";
@@ -17,9 +25,15 @@ export default function OttCard({ ott }: { ott: Show }) {
     .filter(Boolean)
     .join(" · ");
 
+  const ottOptions = ott.streamingOptions.kr[0];
+
+  const ottType = ottOptions.service.id as StreamingAvailabilityCatalog;
+
+  const linkStyle = "flex items-center rounded-md text-lg py-2 px-4";
+
   return (
-    <Link href={`/movies/${ott.imdbId ?? ott.id}`} className="block">
-      <div className="relative overflow-hidden rounded-xl">
+    <div className="relative overflow-hidden rounded-xl group hover:scale-110 z-200">
+      <Link href={`/movies/${ott.imdbId}`} className="block">
         <Image
           src={poster}
           alt={ott.title}
@@ -28,18 +42,50 @@ export default function OttCard({ ott }: { ott: Show }) {
           className="aspect-2/3 h-auto w-full object-cover"
           loading="eager"
         />
+        {ottType && (
+          <div className="absolute top-2 left-2 z-300 group-hover:scale-110">
+            {ottType === Netflix ? (
+              <NetflixBadgeRound />
+            ) : ottType === DisneyPlus ? (
+              <DisneyPlusBadgeRound />
+            ) : ottType === PrimeVideo ? (
+              <PrimeVideoBadgeRound />
+            ) : (
+              <AppleTVBadgeRound />
+            )}
+          </div>
+        )}
         {ott.rating !== 0 && (
-          <span className="absolute top-2 right-2 rounded-md bg-black/70 px-1.5 py-0.5 text-xs font-semibold text-red ">
-            ⭐ {ott.rating} 위
+          <span className="absolute top-2 right-2 rounded-md bg-black/70 px-1.5 py-1 text-xs font-semibold text-red ">
+            ⭐ {ott.rating}위
           </span>
         )}
-        <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/85 to-transparent px-3 pt-10 pb-3">
-          <p className="line-clamp-2 text-sm font-semibold text-white">
-            {ott.title}
-          </p>
-          <p className="mt-1 line-clamp-1 text-xs text-white/70">{meta}</p>
+      </Link>
+      <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/85 to-transparent px-3 pb-6 md:group-hover:opacity-100 md:opacity-0 flex flex-col gap-2">
+        <Link
+          href={`/movies/${ott.imdbId}`}
+          className="line-clamp-2 text-lg font-semibold text-white"
+        >
+          {ott.title}
+        </Link>
+        <p className="line-clamp-1 text-sm text-white/70">{meta}</p>
+        <div className="flex gap-3">
+          <Link
+            href={ottOptions.link}
+            target="_blank"
+            className={`${linkStyle} gap-2 bg-white text-brand-black hover:bg-brand-red hover:text-white items-center align-middle [&:hover_.play]:text-white`}
+          >
+            <div className="play text-brand-black" />
+            바로가기
+          </Link>
+          <Link
+            href={`/movies/${ott.imdbId}`}
+            className={`${linkStyle} bg-brand-red text-white hover:bg-brand-red-hover align-middle`}
+          >
+            상세 정보
+          </Link>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

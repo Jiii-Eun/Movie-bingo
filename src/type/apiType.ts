@@ -1,10 +1,8 @@
 import { getGenres } from "../api/actions";
+import { ottTypes } from "@/constans/ott";
 
 export type StreamingAvailabilityCatalog =
-  | "netflix"
-  | "prime"
-  | "disney"
-  | "apple";
+  (typeof ottTypes)[keyof typeof ottTypes];
 
 export type StreamingAvailabilityShowType = "series" | "movie";
 

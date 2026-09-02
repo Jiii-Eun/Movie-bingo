@@ -5,6 +5,7 @@ import "./globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import NavLayout from "@/components/layouts/header/NavLayout";
 import QueryProvider from "@/components/providers/QueryProvider";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <AppRouterCacheProvider>
           <QueryProvider>
-            <NavLayout />
+            <Suspense>
+              <NavLayout />
+            </Suspense>
+
             <main className="flex-1">{children}</main>
           </QueryProvider>
         </AppRouterCacheProvider>

@@ -3,6 +3,7 @@
 import { getTopShows } from "@/api/actions";
 import Button from "@/components/common/Button";
 import Error from "@/components/common/Error";
+import ContentPagination from "@/components/common/ContentPagination";
 import OttCard from "@/components/ott/OttCard";
 import OttCardSkeleton from "@/components/ott/OttCardSkeleton";
 import { useApi } from "@/hooks/apiHook";
@@ -12,6 +13,7 @@ import {
 } from "@/type/apiType";
 import { useState } from "react";
 import { Show } from "streaming-availability";
+import { useResize } from "@/hooks/resize";
 
 export default function OttLayout({
   ottTitle,
@@ -38,6 +40,12 @@ export default function OttLayout({
   } = useApi<Show[]>(["ott", serviceType, activeTab], () =>
     getTopShows(activeTab, serviceType),
   );
+
+  const [page, setPage] = useState(1);
+  const pageSize = useResize();
+  const ottLength = ottData?.length ?? 0;
+  const pagedData =
+    ottData?.slice((page - 1) * pageSize, page * pageSize) ?? [];
 
   console.log(ottData);
 
@@ -88,11 +96,18 @@ export default function OttLayout({
           <OttCardSkeleton />
         ) : (
           <>
-            {ottData?.map((ott) => (
+            {pagedData?.map((ott) => (
               <OttCard key={ott.id} ott={ott} />
             ))}
           </>
         )}
+      </div>
+
+      <div className="flex justify-center">
+        <ContentPagination
+          totalCount={ottLength}
+          onChange={(page) => setPage(page)}
+        />
       </div>
     </div>
   );

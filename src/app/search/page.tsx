@@ -1,6 +1,6 @@
 "use client";
 
-import SearchInput from "@/components/common/SearchInput";
+import SearchInput from "@/components/common/search/SearchInput";
 import { useSearchParams } from "next/navigation";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import SideFilter from "@/components/search/SideFilter";
@@ -14,6 +14,9 @@ import {
 } from "@/type/apiType";
 import OttCard from "@/components/ott/OttCard";
 import { Show } from "streaming-availability";
+import { Netflix, PrimeVideo, DisneyPlus, AppleTV } from "@/constans/ott";
+import ContentPagination from "@/components/common/ContentPagination";
+import { useResize } from "@/hooks/resize";
 
 export default function Search() {
   const searchParams = useSearchParams();
@@ -22,13 +25,14 @@ export default function Search() {
   const [showType, setShowType] =
     useState<StreamingAvailabilityShowType>("movie");
   const [catalogs, setCatalogs] = useState<StreamingAvailabilityCatalog[]>([
-    "netflix",
-    "prime",
-    "disney",
-    "apple",
+    Netflix,
+    PrimeVideo,
+    DisneyPlus,
+    AppleTV,
   ]);
   const [selectGenre, setSelectGenre] = useState("all");
   const [yearRange, setYearRange] = useState<number[]>([1700, 2026]);
+  const [page, setPage] = useState(1);
 
   const { data: searchData, isPending } = useApi(
     [
@@ -54,11 +58,18 @@ export default function Search() {
 
   console.log(searchData);
 
+  const searchLength = searchData?.shows.length ?? 0;
+  const pageSize = useResize();
+  const pagedData =
+    searchData?.shows.slice((page - 1) * pageSize, page * pageSize) ?? [];
+
   return (
     <>
       <div className="my-6 mx-2">
         <div className="flex-center">
           <SearchInput
+            key={keyword}
+            initKeyword={keyword}
             containerClassName="w-2/3 h-12 bg-white rounded-sm var(--color-brand-black) border-1 border-white"
             inputClassName="text-brand-black"
             buttonClassName={{
@@ -67,7 +78,6 @@ export default function Search() {
               height: "3rem",
               color: "var(--color-brand-black)",
             }}
-            initKeyword={keyword}
           />
         </div>
         <div className="flex items-end justify-center gap-4 my-6">
@@ -89,22 +99,31 @@ export default function Search() {
             setYearRange={setYearRange}
             yearRange={yearRange}
           />
-          <div className="flex-1 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 m-4">
-            {isPending ? (
-              <OttCardSkeleton />
-            ) : (
-              <>
-                {searchData?.shows.length === 0 ? (
-                  <div>검색 결과가 없습니다.</div>
-                ) : (
-                  <>
-                    {searchData?.shows.map((item: Show) => (
-                      <OttCard key={item.imdbId ?? item.id} ott={item} />
-                    ))}
-                  </>
-                )}
-              </>
-            )}
+          <div className="flex flex-col gap-4">
+            <div className="flex-1 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 m-4">
+              {isPending ? (
+                <OttCardSkeleton />
+              ) : (
+                <>
+                  {searchData?.shows.length === 0 ? (
+                    <div>검색 결과가 없습니다.</div>
+                  ) : (
+                    <>
+                      {pagedData?.map((item: Show) => (
+                        <OttCard key={item.imdbId ?? item.id} ott={item} />
+                      ))}
+                    </>
+                  )}
+                </>
+              )}
+            </div>
+
+            <div className="flex justify-center">
+              <ContentPagination
+                totalCount={searchLength}
+                onChange={(page) => setPage(page)}
+              />
+            </div>
           </div>
         </div>
       </div>

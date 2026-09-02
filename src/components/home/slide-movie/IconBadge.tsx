@@ -5,6 +5,7 @@ import {
   AppleTVBadge,
 } from "@/components/common/OttBadge";
 import { StreamingAvailabilityCatalog } from "@/type/apiType";
+import { Netflix, PrimeVideo, DisneyPlus, AppleTV } from "@/constans/ott";
 
 export default function IconBadge({
   type,
@@ -15,10 +16,10 @@ export default function IconBadge({
 
   return (
     <div className="absolute top-2 left-2 ">
-      {type === "netflix" && <NetflixBadge className={badgeStyle} />}
-      {type === "prime" && <PrimeVideoBadge className={badgeStyle} />}
-      {type === "disney" && <DisneyPlusBadge className={badgeStyle} />}
-      {type === "apple" && <AppleTVBadge className={badgeStyle} />}
+      {type === Netflix && <NetflixBadge className={badgeStyle} />}
+      {type === PrimeVideo && <PrimeVideoBadge className={badgeStyle} />}
+      {type === DisneyPlus && <DisneyPlusBadge className={badgeStyle} />}
+      {type === AppleTV && <AppleTVBadge className={badgeStyle} />}
     </div>
   );
 }

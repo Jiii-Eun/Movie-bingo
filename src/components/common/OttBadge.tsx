@@ -1,5 +1,6 @@
 import { StreamingAvailabilityCatalog } from "@/type/apiType";
 import Image from "next/image";
+import { Netflix, PrimeVideo, DisneyPlus, AppleTV } from "@/constans/ott";
 
 export const CATALOG_LABELS = {
   netflix: "Netflix",
@@ -28,10 +29,10 @@ export const OttBadge = ({
         onClick={() => onSelect(type)}
       >
         <div className="rounded-full overflow-hidden bg-white flex-center">
-          {type === "netflix" && <NetflixBadge />}
-          {type === "prime" && <PrimeVideoBadge />}
-          {type === "disney" && <DisneyPlusBadge />}
-          {type === "apple" && <AppleTVBadge />}
+          {type === Netflix && <NetflixBadgeRound />}
+          {type === PrimeVideo && <PrimeVideoBadgeRound />}
+          {type === DisneyPlus && <DisneyPlusBadgeRound />}
+          {type === AppleTV && <AppleTVBadgeRound />}
         </div>
         <span className="text-xs flex-center">{CATALOG_LABELS[type]}</span>
       </div>
@@ -91,6 +92,40 @@ export const AppleTVBadge = ({ className }: { className?: string }) => {
         height={16}
         className={`h-4 w-4 object-contain ${className}`}
       />
+    </>
+  );
+};
+
+const badgeStyle = "w-6 h-6 rounded-full bg-white";
+
+export const NetflixBadgeRound = () => {
+  return (
+    <>
+      <NetflixBadge className={badgeStyle} />
+    </>
+  );
+};
+
+export const PrimeVideoBadgeRound = () => {
+  return (
+    <>
+      <PrimeVideoBadge className={badgeStyle} />
+    </>
+  );
+};
+
+export const DisneyPlusBadgeRound = () => {
+  return (
+    <>
+      <DisneyPlusBadge className={badgeStyle} />
+    </>
+  );
+};
+
+export const AppleTVBadgeRound = () => {
+  return (
+    <>
+      <AppleTVBadge className={badgeStyle} />
     </>
   );
 };

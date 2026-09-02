@@ -8,6 +8,7 @@ import {
   PrimeVideoLogo,
 } from "@/components/common/OttLogo";
 import { useApi } from "@/hooks/apiHook";
+import { Netflix, PrimeVideo, DisneyPlus, AppleTV } from "@/constans/ott";
 import {
   Checkbox,
   FormControl,
@@ -122,8 +123,8 @@ export default function SideFilter({
               control={
                 <Checkbox
                   sx={checkboxClasses}
-                  checked={catalogs.includes("netflix")}
-                  onChange={handleCatalogChange("netflix")}
+                  checked={catalogs.includes(Netflix)}
+                  onChange={handleCatalogChange(Netflix)}
                 />
               }
               label={<NetflixLogo className="md:w-21 md:h-10 w-16 h-10" />}
@@ -133,8 +134,8 @@ export default function SideFilter({
               control={
                 <Checkbox
                   sx={checkboxClasses}
-                  checked={catalogs.includes("prime")}
-                  onChange={handleCatalogChange("prime")}
+                  checked={catalogs.includes(PrimeVideo)}
+                  onChange={handleCatalogChange(PrimeVideo)}
                 />
               }
               label={<PrimeVideoLogo className="md:w-21 md:h-10 w-16 h-10" />}
@@ -144,8 +145,8 @@ export default function SideFilter({
               control={
                 <Checkbox
                   sx={checkboxClasses}
-                  checked={catalogs.includes("disney")}
-                  onChange={handleCatalogChange("disney")}
+                  checked={catalogs.includes(DisneyPlus)}
+                  onChange={handleCatalogChange(DisneyPlus)}
                 />
               }
               label={<DisneyPlusLogo className="md:w-16 md:h-16 w-10 h-10" />}
@@ -155,8 +156,8 @@ export default function SideFilter({
               control={
                 <Checkbox
                   sx={checkboxClasses}
-                  checked={catalogs.includes("apple")}
-                  onChange={handleCatalogChange("apple")}
+                  checked={catalogs.includes(AppleTV)}
+                  onChange={handleCatalogChange(AppleTV)}
                 />
               }
               label={<AppleTVLogo className="md:w-20 md:h-16 w-16 h-10" />}

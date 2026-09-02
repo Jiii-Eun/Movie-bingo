@@ -7,21 +7,29 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useRef, useState } from "react";
 import { SxProps } from "@mui/material";
 
-export default function SearchInput({
-  containerClassName,
-  inputClassName,
-  buttonClassName,
-  initKeyword,
-}: {
+export type SearchInputProps = {
   containerClassName?: string;
   inputClassName?: string;
   buttonClassName?: SxProps;
   initKeyword?: string;
-}) {
-  const [keyword, setKeyword] = useState(initKeyword || "");
-  const isComposing = useRef<boolean>(false);
+};
 
+export default function SearchInput({
+  initKeyword = "",
+  containerClassName,
+  inputClassName,
+  buttonClassName,
+}: {
+  initKeyword?: string;
+  containerClassName?: string;
+  inputClassName?: string;
+  buttonClassName?: SxProps;
+}) {
   const router = useRouter();
+
+  const [keyword, setKeyword] = useState(initKeyword || "");
+
+  const isComposing = useRef<boolean>(false);
 
   const keywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -59,7 +67,7 @@ export default function SearchInput({
         <input
           type="text"
           placeholder="Search"
-          className={`rounded-sm p-2 border-1 border-transparent bg-white/10 focus:outline-none focus:border-white ${inputClassName}`}
+          className={`rounded-sm p-2 border-1 border-transparent bg-white/10 focus:outline-none focus:border-white w-full ${inputClassName}`}
           value={keyword}
           onChange={keywordChange}
           onCompositionStart={onCompositionStart}
