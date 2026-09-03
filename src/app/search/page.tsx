@@ -100,7 +100,7 @@ export default function Search() {
             yearRange={yearRange}
           />
           <div className="flex min-w-0 flex-1 flex-col gap-4">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-8 gap-4 m-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-4 gap-2 m-4">
               {isPending ? (
                 <OttCardSkeleton />
               ) : (

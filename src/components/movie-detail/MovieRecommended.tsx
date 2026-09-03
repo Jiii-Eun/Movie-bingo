@@ -38,7 +38,7 @@ export default function MovieRecommended({
 
   return (
     <section className="px-2 py-6">
-      <h3>추천 {widthSize >= 1024 && "영화"}</h3>
+      <h3>추천 {widthSize === 12 ? "영화" : ""}</h3>
       <SlideMovies
         data={recommendedMovieList}
         isPending={isPending}

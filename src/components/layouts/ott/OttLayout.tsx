@@ -139,7 +139,7 @@ export default function OttLayout({
         </div>
       </div>
       <div
-        className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-2 ${classNameChildren}`}
+        className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2 ${classNameChildren}`}
       >
         {isPending ? (
           <OttCardSkeleton />

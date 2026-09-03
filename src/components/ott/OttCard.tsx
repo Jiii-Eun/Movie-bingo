@@ -75,24 +75,27 @@ export default function OttCard({ ott }: { ott: Show }) {
           {ott.title}
         </Link>
         <p className="line-clamp-1 text-sm text-white/70">{meta}</p>
+        {/* 스타일 수정해야함 */}
         <div className="flex gap-2 sm:gap-3">
           <Link
             href={ottOptions.link}
             target="_blank"
             className={`${linkStyle} group/link flex items-center justify-center gap-2 bg-white text-brand-black hover:bg-brand-red hover:text-white`}
           >
-            <div className="play lg:hidden block shrink-0 text-brand-black transition-colors duration-200 group-hover/link:text-white" />
+            <div className="block shrink-0 text-brand-black transition-colors duration-200 group-hover/link:text-white lg:hidden">
+              <div className="play" />
+            </div>
 
-            <span className="hidden text-brand-black transition-colors duration-200 group-hover/link:text-white lg:block">
+            <div className="hidden text-brand-black transition-colors duration-200 group-hover/link:text-white lg:block">
               바로가기
-            </span>
+            </div>
           </Link>
 
           <Link
             href={`/movies/${ott.imdbId}`}
             className={`${linkStyle} flex items-center justify-center bg-brand-red hover:bg-brand-red-hover`}
           >
-            <div className="lg:hidden">
+            <div className="block lg:hidden">
               <AddIcon
                 sx={{
                   color: "white",
@@ -101,7 +104,7 @@ export default function OttCard({ ott }: { ott: Show }) {
               />
             </div>
 
-            <span className="hidden text-white lg:block">상세 정보</span>
+            <div className="hidden text-white lg:block">상세 정보</div>
           </Link>
         </div>
       </div>
