@@ -13,6 +13,7 @@ import SlideMovies from "@/components/common/SlideMovies";
 import { StreamingAvailabilityCatalog } from "@/type/apiType";
 import MovieCardPost from "@/components/home/slide-movie/MovieCardPost";
 import Error from "@/components/common/Error";
+import OttCard from "@/components/ott/OttCard";
 
 export default function UpdateMovies() {
   const [changeType, setChangeType] = useState<"new" | "expiring" | "upcoming">(
@@ -74,16 +75,13 @@ export default function UpdateMovies() {
       </div>
 
       <SlideMovies data={contentShows ?? []} isPending={isPending}>
-        {contentShows?.map((show) => (
-          <MovieCardPost
-            key={show.id}
-            show={show}
-            activeBadge={
-              show?.streamingOptions?.kr[0]?.service
-                ?.id as StreamingAvailabilityCatalog
-            }
-          />
-        ))}
+        {contentShows?.map((show) => {
+          return (
+            <div key={show.id} className="p-3">
+              <OttCard ott={show} />
+            </div>
+          );
+        })}
       </SlideMovies>
     </section>
   );

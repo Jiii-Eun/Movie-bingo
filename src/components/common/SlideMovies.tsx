@@ -2,6 +2,7 @@ import CardSkeleton from "@/components/home/slide-movie/CardSkeleton";
 import NoList from "@/components/home/slide-movie/NoList";
 import Carousel from "react-multi-carousel";
 import { responsive } from "@/constans/responesive";
+import "react-multi-carousel/lib/styles.css";
 
 export default function SlideMovies({
   data,

@@ -10,6 +10,7 @@ import { StreamingAvailabilityCatalog } from "@/type/apiType";
 import SlideMovies from "@/components/common/SlideMovies";
 import MovieCardPost from "@/components/home/slide-movie/MovieCardPost";
 import Error from "@/components/common/Error";
+import OttCard from "@/components/ott/OttCard";
 
 interface TopMoviesProps {
   title: string;
@@ -49,7 +50,9 @@ export default function TopMovies({ title, badges }: TopMoviesProps) {
 
       <SlideMovies data={topShows ?? []} isPending={isPending}>
         {topShows?.map((show) => (
-          <MovieCardPost key={show.id} show={show} activeBadge={active} />
+          <div key={show.id} className="p-3">
+            <OttCard ott={show} />
+          </div>
         ))}
       </SlideMovies>
     </section>

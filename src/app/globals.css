@@ -34,10 +34,6 @@ body {
   color: #fff;
 }
 
-* {
-  transition: all 0.2s ease-in-out;
-}
-
 .flex-center {
   display: flex;
   justify-content: center;

@@ -16,7 +16,7 @@ export default function MovieCardPost({
   activeBadge: StreamingAvailabilityCatalog;
 }) {
   return (
-    <div className="px-2">
+    <div className="px-2 hover:scale-110 transition-transform duration-200">
       <Link href={`/movies/${show.imdbId}`}>
         <div className="relative overflow-hidden rounded-xl">
           {activeBadge && <IconBadge type={activeBadge} />}

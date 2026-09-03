@@ -73,7 +73,6 @@ export default function MoviePoster() {
                 width={780}
                 height={1170}
                 className="aspect-2/3 max-w-full md:max-w-[20rem] h-auto w-full rounded-2xl object-cover shadow-banner"
-                priority
               />
             </div>
 
@@ -140,7 +139,7 @@ export default function MoviePoster() {
                       href={option.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex w-full items-center justify-center gap-2 rounded-md bg-white px-4 py-3 text-brand-black hover:bg-brand-red hover:text-white md:w-auto md:min-w-40"
+                      className="flex w-full items-center justify-center gap-2 rounded-md bg-white px-4 py-3 text-brand-black transition-colors duration-200 hover:bg-brand-red hover:text-white md:w-auto md:min-w-40"
                     >
                       <span className=" md:flex">
                         <OttServiceIcon id={ottId} />

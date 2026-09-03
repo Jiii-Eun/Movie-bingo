@@ -5,7 +5,7 @@ export default function Logo() {
     <div className="flex h-16 items-center px-4">
       <Link href="/" className="group inline-flex items-center gap-2.5">
         <p>
-          <span className="font-bold [text-shadow:0_0_1.25rem_var(--color-brand-red)] transition">
+          <span className="font-bold transition-colors duration-200 [text-shadow:0_0_1.25rem_var(--color-brand-red)]">
             B
           </span>
           in

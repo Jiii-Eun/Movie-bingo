@@ -9,6 +9,7 @@ export default function Navbar() {
     "text-brand-gray",
     "border-1 border-transparent",
     "px-4 py-2",
+    "transition-colors duration-200",
     "hover:bg-white/10 hover:rounded-sm",
   );
 

@@ -1,12 +1,12 @@
 "use client";
 
 import { getTopShows } from "@/api/actions";
-import Button from "@/components/common/Button";
 import Skeleton from "@/components/common/Skeleton";
 import { useApi } from "@/hooks/apiHook";
 import Image from "next/image";
 import { Show } from "streaming-availability";
 import Error from "@/components/common/Error";
+import ConnectButton from "@/components/common/ConectButton";
 
 export default function Banner() {
   const {
@@ -46,32 +46,10 @@ export default function Banner() {
                   {featured.overview}
                 </p>
                 <div className="flex gap-3">
-                  <Button
-                    sx={{
-                      backgroundColor: "white",
-                      borderRadius: "6rem",
-                      padding: "0.5rem 1rem",
-                      fontSize: "0.875rem",
-                      height: "2.25rem",
-                      color: "var(--color-brand-black)",
-                    }}
-                    className="gap-2"
-                  >
-                    <div className="play text-brand-black" />
-                    재생
-                  </Button>
-                  <Button
-                    sx={{
-                      backgroundColor: "rgba(255, 255, 255, 0.3)",
-                      borderRadius: "6rem",
-                      padding: "0.5rem 1rem",
-                      fontSize: "0.875rem",
-                      height: "2.25rem",
-                      color: "white",
-                    }}
-                  >
-                    상세 정보
-                  </Button>
+                  <ConnectButton
+                    optionLink={featured.streamingOptions.kr[0].link}
+                    imdbId={featured.imdbId}
+                  />
                 </div>
               </div>
             </div>

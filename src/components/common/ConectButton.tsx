@@ -1,14 +1,15 @@
 import Link from "next/link";
 import AddIcon from "@mui/icons-material/Add";
 
-export default function ConectButton({
+export default function ConnectButton({
   optionLink,
   imdbId,
 }: {
   optionLink: string;
   imdbId: string;
 }) {
-  const linkStyle = "flex items-center rounded-md text-lg py-2 px-4";
+  const linkStyle =
+    "flex items-center rounded-md text-lg py-2 px-4 transition-colors duration-200";
 
   return (
     <>
@@ -17,16 +18,15 @@ export default function ConectButton({
         target="_blank"
         className={`${linkStyle} gap-2 bg-white text-brand-black hover:bg-brand-red hover:text-white items-center align-middle group/link`}
       >
-        <div className="play text-brand-black group-hover/link:text-white" />
-        <div className="text-brand-black group-hover/link:text-white hidden md:block">
+        <div className="play text-brand-black transition-colors duration-200 group-hover/link:text-white" />
+        <div className="hidden text-brand-black transition-colors duration-200 group-hover/link:text-white md:block">
           바로가기
         </div>
       </Link>
       <Link
         href={`/movies/${imdbId}`}
-        className={`${linkStyle} bg-brand-red hover:bg-brand-red-hover align-middle`}
+        className={`${linkStyle} bg-brand-red align-middle hover:bg-brand-red-hover`}
       >
-        {/* 스타일 확인해야함 */}
         <div className="block md:hidden">
           <AddIcon
             sx={{ color: "white", fontSize: "1.5rem", overflow: "hidden" }}

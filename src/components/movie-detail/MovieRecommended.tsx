@@ -50,7 +50,10 @@ export default function MovieRecommended({
           if (!image) return null;
 
           return (
-            <div key={movie.id} className="px-2 hover:scale-110">
+            <div
+              key={movie.id}
+              className="px-2 transition-transform duration-200 hover:scale-110"
+            >
               <div className="relative overflow-hidden rounded-xl">
                 <Link href={`/movies/${id}`} className="block">
                   <Image
@@ -75,7 +78,7 @@ export default function MovieRecommended({
                   </div>
                   <Link
                     href={`/movies/${id}`}
-                    className="flex shrink-0 items-center justify-center rounded-md bg-brand-red px-2.5 py-1.5 text-white hover:bg-brand-red-hover md:px-3 md:py-2"
+                    className="flex shrink-0 items-center justify-center rounded-md bg-brand-red px-2.5 py-1.5 text-white transition-colors duration-200 hover:bg-brand-red-hover md:px-3 md:py-2"
                   >
                     <AddIcon
                       className="md:hidden"

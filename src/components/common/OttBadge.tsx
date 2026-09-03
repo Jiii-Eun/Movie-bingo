@@ -23,8 +23,8 @@ export const OttBadge = ({
   return (
     <>
       <div
-        className={`flex-center border rounded-full border-white/10 gap-1 text-white px-2 py-1 cursor-pointer ${className} ${
-          isActive ? "bg-brand-red-muted" : ""
+        className={`flex-center cursor-pointer gap-1 rounded-full border border-white/10 px-2 py-1 text-white transition-colors duration-200 ${className} ${
+          isActive ? "bg-brand-red-muted" : "hover:bg-white/10"
         }`}
         onClick={() => onSelect(type)}
       >
