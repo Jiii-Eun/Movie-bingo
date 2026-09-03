@@ -152,12 +152,15 @@ export default function OttLayout({
         )}
       </div>
 
-      <div className="flex justify-center">
-        <ContentPagination
-          totalCount={ottLength}
-          onChange={(page) => setPage(page)}
-        />
-      </div>
+      {isPending ? (
+        <div className="flex justify-center">
+          <ContentPagination
+            totalCount={ottLength}
+            currentPage={page}
+            onChange={(page) => setPage(page)}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -31,7 +31,7 @@ export default function NavLayout() {
 
   return (
     <div
-      className={`sticky top-0 z-50 bg-brand-black transition-transform duration-300 ${showHeader ? "translate-y-0" : "-translate-y-16"}`}
+      className={`sticky top-0 z-500 bg-brand-black transition-transform duration-300 ${showHeader ? "translate-y-0" : "-translate-y-16"}`}
     >
       <div
         className={`transition-transform duration-300 ${showHeader ? "translate-y-0" : "-translate-y-16"}`}

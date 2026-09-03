@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import "react-multi-carousel/lib/styles.css";
 import AddIcon from "@mui/icons-material/Add";
+import { useResize } from "@/hooks/resize";
 
 const TMDB_BACKDROP = "https://image.tmdb.org/t/p/w780";
 
@@ -19,6 +20,8 @@ export default function MovieRecommended({
   id: string;
   tmdbId: string;
 }) {
+  const widthSize = useResize();
+
   const {
     data: recommendedMovieList = [],
     isPending,
@@ -35,7 +38,7 @@ export default function MovieRecommended({
 
   return (
     <section className="px-2 py-6">
-      <h3>추천 영화</h3>
+      <h3>추천 {widthSize >= 1024 && "영화"}</h3>
       <SlideMovies
         data={recommendedMovieList}
         isPending={isPending}
@@ -84,7 +87,7 @@ export default function MovieRecommended({
                       className="md:hidden"
                       sx={{ color: "white", fontSize: "1.25rem" }}
                     />
-                    <span className="hidden text-sm font-medium md:inline">
+                    <span className="hidden text-sm font-medium lg:block">
                       상세 정보
                     </span>
                   </Link>

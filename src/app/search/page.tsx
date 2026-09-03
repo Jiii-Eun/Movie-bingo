@@ -99,8 +99,8 @@ export default function Search() {
             setYearRange={setYearRange}
             yearRange={yearRange}
           />
-          <div className="flex flex-col gap-4">
-            <div className="flex-1 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 m-4">
+          <div className="flex min-w-0 flex-1 flex-col gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-8 gap-4 m-4">
               {isPending ? (
                 <OttCardSkeleton />
               ) : (
@@ -120,7 +120,8 @@ export default function Search() {
             <div className="flex justify-center">
               <ContentPagination
                 totalCount={searchLength}
-                onChange={(page) => setPage(page)}
+                currentPage={page}
+                onChange={setPage}
               />
             </div>
           </div>

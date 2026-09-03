@@ -2,29 +2,24 @@
 
 import { useResize } from "@/hooks/resize";
 import Pagination from "@mui/material/Pagination";
-import { useState } from "react";
 
 export default function ContentPagination({
-  totalCount = 1,
+  totalCount = 0,
+  currentPage,
   onChange,
   className,
 }: {
   totalCount?: number;
-  onChange?: (page: number) => void;
+  currentPage: number;
+  onChange: (page: number) => void;
   className?: string;
 }) {
   const pageSize = useResize();
 
-  const [internalPage, setInternalPage] = useState(1);
-  const currentPage = totalCount ?? internalPage;
-
   const pageCount = Math.max(1, Math.ceil(totalCount / pageSize));
 
   const handleChange = (value: number) => {
-    if (totalCount === undefined) {
-      setInternalPage(value);
-    }
-    onChange?.(value);
+    onChange(value);
   };
 
   return (
@@ -41,13 +36,16 @@ export default function ContentPagination({
           "& .MuiPaginationItem-root": {
             color: "#fff",
           },
+
           "& .MuiPaginationItem-root.Mui-selected": {
             color: "#fff",
             backgroundColor: "var(--color-brand-red)",
+
             "&:hover": {
               backgroundColor: "var(--color-brand-red-hover)",
             },
           },
+
           "& .MuiPaginationItem-root:hover": {
             color: "#fff",
             backgroundColor: "rgba(228, 57, 70, 0.2)",
