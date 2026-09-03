@@ -9,7 +9,7 @@ import { useApi } from "@/hooks/apiHook";
 import Button from "@/components/common/Button";
 import Badge from "@/components/common/Badge";
 
-import SlideMovies from "@/components/home/slide-movie/SlideMovies";
+import SlideMovies from "@/components/common/SlideMovies";
 import { StreamingAvailabilityCatalog } from "@/type/apiType";
 import MovieCardPost from "@/components/home/slide-movie/MovieCardPost";
 import Error from "@/components/common/Error";
@@ -31,9 +31,13 @@ export default function UpdateMovies() {
     return <Error error={error} />;
   }
 
-  const shows = updateMovies ? Object.values(updateMovies.shows) : undefined;
+  const contentShows = updateMovies?.shows
+    ? Object.values(updateMovies.shows).filter(
+        (show) => show.streamingOptions?.kr?.[0],
+      )
+    : undefined;
 
-  console.log(shows);
+  console.log(contentShows);
 
   const targetMovies = [
     { name: "신작", value: "new" },
@@ -69,14 +73,14 @@ export default function UpdateMovies() {
         ))}{" "}
       </div>
 
-      <SlideMovies data={shows ?? []} isPending={isPending}>
-        {shows?.map((show) => (
+      <SlideMovies data={contentShows ?? []} isPending={isPending}>
+        {contentShows?.map((show) => (
           <MovieCardPost
             key={show.id}
             show={show}
             activeBadge={
-              show.streamingOptions.kr[0].service
-                .id as StreamingAvailabilityCatalog
+              show?.streamingOptions?.kr[0]?.service
+                ?.id as StreamingAvailabilityCatalog
             }
           />
         ))}

@@ -3,11 +3,11 @@ import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 export const useApi = <T>(
   queryKey: string[],
   queryFn: () => Promise<T>,
-  options?: UseQueryOptions<T>,
+  options?: Omit<UseQueryOptions<T>, "queryKey" | "queryFn">,
 ) => {
   return useQuery({
-    queryKey: queryKey,
-    queryFn: queryFn,
+    queryKey,
+    queryFn,
     refetchOnWindowFocus: false,
     staleTime: 60 * 60 * 1000 * 24,
     ...options,

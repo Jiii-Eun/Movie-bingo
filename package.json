@@ -21,6 +21,8 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-multi-carousel": "^2.8.6",
+    "react-spinners": "^0.17.0",
+    "react-youtube": "^10.1.0",
     "streaming-availability": "^4.5.0"
   },
   "devDependencies": {

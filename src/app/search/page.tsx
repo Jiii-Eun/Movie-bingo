@@ -117,7 +117,7 @@ export default function Search() {
                 </>
               )}
             </div>
-
+            {/* 스타일 확인해야함 */}
             <div className="flex justify-center">
               <ContentPagination
                 totalCount={searchLength}

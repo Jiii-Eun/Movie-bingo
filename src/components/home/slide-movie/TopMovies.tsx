@@ -7,7 +7,7 @@ import { Show } from "streaming-availability";
 import { useState } from "react";
 import { StreamingAvailabilityCatalog } from "@/type/apiType";
 
-import SlideMovies from "@/components/home/slide-movie/SlideMovies";
+import SlideMovies from "@/components/common/SlideMovies";
 import MovieCardPost from "@/components/home/slide-movie/MovieCardPost";
 import Error from "@/components/common/Error";
 

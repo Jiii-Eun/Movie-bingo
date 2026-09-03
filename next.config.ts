@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: "cdn.movieofthenight.com",
         pathname: "/show/**",
       },
+      {
+        protocol: "https",
+        hostname: "image.tmdb.org",
+        pathname: "/t/p/**",
+      },
     ],
   },
 };
