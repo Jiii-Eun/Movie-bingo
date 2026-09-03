@@ -18,7 +18,9 @@ export default function Navbar() {
       <ul className="flex items-center gap-2">
         <li>
           <NavLink href="/" className={headerNavItemClasses}>
-            <span className="h-6 flex-center">추천 영화</span>
+            <span className="h-6 flex-center">
+              추천 <div className="hidden md:block"> 영화</div>
+            </span>
           </NavLink>
         </li>
         <li>

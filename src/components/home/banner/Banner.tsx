@@ -42,7 +42,7 @@ export default function Banner() {
                   {featured.genres.map((genre) => genre.name).join(" • ")} •{" "}
                   {featured.runtime}분 • {featured.releaseYear} 년 개봉
                 </div>
-                <p className="text-white md:text-2xl md:pb-3 font-bold">
+                <p className="text-white md:text-2xl md:pb-3 font-bold line-clamp-2">
                   {featured.overview}
                 </p>
                 <div className="flex gap-3">
