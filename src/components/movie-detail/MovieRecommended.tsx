@@ -52,41 +52,39 @@ export default function MovieRecommended({
           return (
             <div
               key={movie.id}
-              className="px-2 transition-transform duration-200 hover:scale-110"
+              className="px-2 transition-transform duration-200 hover:scale-105"
             >
-              <div className="relative overflow-hidden rounded-xl">
-                <Link href={`/movies/${id}`} className="block">
+              <div className="relative aspect-video overflow-hidden rounded-xl">
+                <Link href={`/movies/${id}`} className="block h-full">
                   <Image
                     src={image}
                     alt={movie.title}
                     width={780}
                     height={440}
+                    className="h-full w-full object-cover"
                   />
                 </Link>
-                <div className="text-sm text-gray-500 bg-white/70 rounded-full px-2 py-1 absolute left-3 top-3">
+                <div className="absolute top-2 left-2 rounded-full bg-black/60 px-2 py-0.5 text-xs text-white">
                   ⭐ {movie.vote_average?.toFixed(1)}
                 </div>
 
-                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-linear-to-t from-black/85 to-transparent px-3 pt-10 pb-3">
-                  <div className="min-w-0">
-                    <p className="flex items-end gap-2 text-sm font-medium text-white md:text-2xl md:font-bold">
-                      <span>{movie.title}</span>
-                      <span className="text-xs text-white/70 md:text-[0.875rem]">
-                        {year}년
-                      </span>
+                <div className="absolute inset-x-0 bottom-0 flex items-end gap-2 bg-linear-to-t from-black/90 via-black/50 to-transparent px-2.5 pt-8 pb-2.5 sm:px-3 sm:pb-3">
+                  <div className="min-w-0 flex-1">
+                    <p className="line-clamp-2 text-sm leading-snug font-semibold text-white sm:text-base">
+                      {movie.title}
                     </p>
+                    {year && (
+                      <p className="mt-0.5 truncate text-xs whitespace-nowrap text-white/70">
+                        {year}년
+                      </p>
+                    )}
                   </div>
                   <Link
                     href={`/movies/${id}`}
-                    className="flex shrink-0 items-center justify-center rounded-md bg-brand-red px-2.5 py-1.5 text-white transition-colors duration-200 hover:bg-brand-red-hover md:px-3 md:py-2"
+                    className="flex size-8 shrink-0 items-center justify-center rounded-md bg-brand-red text-white transition-colors duration-200 hover:bg-brand-red-hover sm:size-9"
+                    aria-label={`${movie.title} 상세 정보`}
                   >
-                    <AddIcon
-                      className="md:hidden"
-                      sx={{ color: "white", fontSize: "1.25rem" }}
-                    />
-                    <span className="hidden text-sm font-medium lg:block">
-                      상세 정보
-                    </span>
+                    <AddIcon sx={{ color: "white", fontSize: "1.25rem" }} />
                   </Link>
                 </div>
               </div>
