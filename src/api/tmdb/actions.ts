@@ -1,5 +1,4 @@
 "use server";
-// 추가 됐을까?
 
 import axios from "axios";
 

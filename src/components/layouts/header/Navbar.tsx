@@ -14,7 +14,7 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="border-t-1 border-t-white/10 shadow-sm p-2 bg-white/2">
+    <nav className="border-t-1 border-t-white/10 shadow-sm p-2 bg-white/20">
       <ul className="flex items-center gap-2">
         <li>
           <NavLink href="/" className={headerNavItemClasses}>
